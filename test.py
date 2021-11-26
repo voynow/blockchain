@@ -21,7 +21,7 @@ w3 = Web3(Web3.HTTPProvider(endpoint))
 block_number = w3.eth.getBlock(w3.eth.defaultBlock, True).number
 
 # iter over 'n_iter' most recent blocks and collect associated data
-n_iter = 50
+n_iter = 1000
 for i in range(n_iter):
     block = w3.eth.getBlock(block_number, True)
     print(f'block_id={block_number}')
@@ -31,7 +31,7 @@ for i in range(n_iter):
         data[key].append(getattr(block, key))
 
 # format data as .csv file
-pd.DataFrame(data).to_csv(f'{n_iter}_recent_blocks.csv', index=False)
+pd.DataFrame(data).to_csv(f'block_data.csv', index=False)
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
